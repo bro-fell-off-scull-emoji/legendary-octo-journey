@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Not Found</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #gameFrame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+
+    #openBlobBtn {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+      padding: 10px 15px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<button id="openBlobBtn" onclick="openBlob()">Open in blank<button>
+
+<iframe id="gameFrame"></iframe>
+
+<script>
+let gameURL = "https://th4f-fri4-ve-3d-e.vercel.app/games/fnaf-3/index.html";
+document.getElementById("gameFrame").src = gameURL;
+function openBlob() {
+  let win = window.open("about:blank", "_blank");
+
+  win.document.open();
+  win.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Not Found</title>
+      <style>
+        body { margin:0; overflow:hidden; }
+        iframe {
+          width:100vw;
+          height:100vh;
+          border:none;
+        }
+      </style>
+    </head>
+    <body>
+      <iframe src="${gameURL}"></iframe>
+    </body>
+    </html>
+  `);
+  win.document.close();
+}
+</script>
+
+</body>
+</html>
